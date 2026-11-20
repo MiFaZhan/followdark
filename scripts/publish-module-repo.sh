@@ -3,6 +3,7 @@
 # 前提：已通过 https://modules.lsposed.org/submission 提交并拿到该 org 下的仓库写权限。
 set -euo pipefail
 
+ROOT=$(cd "$(dirname "$0")/.." && pwd)
 PKG=com.mifazhan.followdark
 ORG_REPO="Xposed-Modules-Repo/$PKG"
 VERSION_CODE=14
@@ -10,16 +11,18 @@ VERSION_NAME=2.6
 TAG="$VERSION_CODE-$VERSION_NAME"
 APK="build/followdark-v$VERSION_NAME.apk"
 
+cd "$ROOT"
 [ -f "$APK" ] || { echo "先跑 ./build.sh 生成 $APK"; exit 1; }
 
 WORK=$(mktemp -d)
 git clone "git@github.com:$ORG_REPO.git" "$WORK" 2>/dev/null \
   || gh repo clone "$ORG_REPO" "$WORK"
 cd "$WORK"
+SRC="$ROOT"
 
-cp "$OLDPWD/xposed/module.prop" ./module.prop
+cp "$SRC/xposed/module.prop" ./module.prop
 mkdir -p releases
-cp "$OLDPWD/$APK" "./releases/$PKG-$VERSION_NAME.apk"
+cp "$SRC/$APK" "./releases/$PKG-$VERSION_NAME.apk"
 
 git add -A
 git commit -m "chore: release $VERSION_NAME ($VERSION_CODE)" || echo "无变化"
