@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 作用域：系统框架(system_server) + 设置。
+         Vector/LSPosed 内部把 system_server 记作 "system"（见 /data/adb/lspd 的 scope 表），
+         这里同时写上 "android" 只是兼容旧命名，多出来的一行不影响。 -->
+    <string-array name="xposed_scope">
+        <item>system</item>
+        <item>android</item>
+        <item>com.android.settings</item>
+    </string-array>
+</resources>
