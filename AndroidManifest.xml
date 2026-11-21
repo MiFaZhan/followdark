@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mifazhan.followdark"
-    android:versionCode="15"
-    android:versionName="2.7">
+    android:versionCode="16"
+    android:versionName="2.8">
 
     <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="36" />
 
@@ -25,6 +25,9 @@
             android:name=".JumpActivity"
             android:label="极暗"
             android:exported="true"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:taskAffinity="com.mifazhan.followdark.jump"
             android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

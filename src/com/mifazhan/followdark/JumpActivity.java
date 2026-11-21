@@ -28,6 +28,7 @@ public class JumpActivity extends Activity {
                 // 打不开就算了，别崩
             }
         }
-        finish();
+        // excludeFromRecents + 空任务栈：跳完不留后台卡片
+        finishAndRemoveTask();
     }
 }

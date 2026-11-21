@@ -6,8 +6,8 @@ set -euo pipefail
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 PKG=com.mifazhan.followdark
 ORG_REPO="Xposed-Modules-Repo/$PKG"
-VERSION_CODE=15
-VERSION_NAME=2.7
+VERSION_CODE=16
+VERSION_NAME=2.8
 TAG="$VERSION_CODE-$VERSION_NAME"
 APK="build/followdark-v$VERSION_NAME.apk"
 

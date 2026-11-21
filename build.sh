@@ -7,7 +7,7 @@ BT="$SDK/build-tools/37.0.0"
 PLATFORM="$SDK/platforms/android-36/android.jar"
 API_JAR="libs/api-82.jar"
 OUT="build"
-NAME="followdark-v2.7"
+NAME="followdark-v2.8"
 
 [ -x "$BT/aapt2" ] || { echo "缺少 build-tools: $BT"; exit 1; }
 [ -f "$PLATFORM" ] || { echo "缺少 platform: $PLATFORM"; exit 1; }
@@ -28,8 +28,8 @@ echo "==> aapt2 link"
   -A assets \
   --min-sdk-version 29 \
   --target-sdk-version 36 \
-  --version-code 15 \
-  --version-name 2.7 \
+  --version-code 16 \
+  --version-name 2.8 \
   --auto-add-overlay
 
 echo "==> javac"
