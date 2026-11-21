@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mifazhan.followdark"
-    android:versionCode="14"
-    android:versionName="2.6">
+    android:versionCode="15"
+    android:versionName="2.7">
 
     <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="36" />
 
 
     <application
         android:label="极暗跟随"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
         android:allowBackup="false">
 
         <!-- Xposed 模块声明（经典 API / LSPosed / Vector 兼容） -->
@@ -17,6 +19,18 @@
             android:value="给系统「极暗」加四个触发源：跟随深色模式 / 跟随护眼模式 / 定时开启 / 日出日落。开关注入在设置 → 极暗页面里，本模块无桌面图标。" />
         <meta-data android:name="xposedminversion" android:value="93" />
         <meta-data android:name="xposedscope" android:resource="@array/xposed_scope" />
+
+        <!-- 桌面入口：无界面，点一下跳到系统「极暗」设置页 -->
+        <activity
+            android:name=".JumpActivity"
+            android:label="极暗"
+            android:exported="true"
+            android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
     </application>
 </manifest>

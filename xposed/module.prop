@@ -1,6 +1,6 @@
 id=com.mifazhan.followdark
 name=极暗跟随
-version=v2.6
-versionCode=14
+version=v2.7
+versionCode=15
 author=MiFaZhan
-description=给系统「极暗」加自动开启：跟随深色模式 / 跟随护眼模式 / 定时（日出日落·自定义时间）。开关直接注入在 设置 → 极暗 页面里，无桌面图标。
+description=给系统「极暗」加自动开启：跟随深色模式 / 跟随护眼模式 / 定时（日出日落·自定义时间）。开关直接注入在 设置 → 极暗 页面里；桌面只有一个跳到该页的入口。

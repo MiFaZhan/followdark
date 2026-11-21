@@ -26,6 +26,7 @@
 - **合成规则**：任意一个已启用的触发源成立即打开极暗；全部不成立才关闭。未启用任何触发源时，模块不会改写极暗状态。
 - **事件驱动**：不轮询、不常驻端口、不使用后台服务，只在状态真正翻转时写入一次系统设置。
 - **手动优先**：极暗本身的手动开关保持原样，任何时刻都可以直接关掉；下一次触发源变化时才会重新对齐。
+- **桌面入口**：安装后桌面会出现一个「极暗」图标，点一下直接跳到极暗设置页（零界面，只做导航）。
 - **干净卸载**：在框架中禁用模块并重启即恢复原生行为，只留下一个 `Settings.Secure` 配置键。
 
 ## 兼容性
@@ -43,12 +44,13 @@
 2. 安装 APK：
 
    ```bash
-   adb install -r FollowDark-v2.6.apk
+   adb install -r FollowDark-v2.7.apk
    ```
 
 3. 在模块管理器中启用「极暗跟随」，确认作用域包含 **系统框架** 与 **设置**。
 4. 重启设备。
 5. 打开 **设置 → 极暗**，在「将屏幕调成极暗」下方可以看到「自动开启」分组。
+   （也可以直接点桌面上的「极暗」图标，一步到这一页；系统设置里搜索「极暗」同样可达。）
 
 > 从 LSPosed 模块仓库安装时可跳过第 2 步，其余步骤相同。
 
@@ -100,7 +102,7 @@ hook `com.android.server.UiModeManagerService` 的夜间模式重算入口，读
 
 ```bash
 export ANDROID_HOME=$HOME/android-sdk
-./build.sh          # 产物：build/followdark-v2.6.apk
+./build.sh          # 产物：build/followdark-v2.7.apk
 ```
 
 构建流程为 `aapt2 → javac → d8 → zipalign → apksigner`。仓库内的 `keystore.jks`（自签名，密码均为 `android`）用于保持签名一致，使新版本可以直接覆盖安装。
@@ -113,6 +115,7 @@ assets/xposed_init           入口类列表
 res/values/arrays.xml        作用域声明
 src/com/mifazhan/followdark/
   Main.java                  IXposedHookLoadPackage 入口
+  JumpActivity.java          桌面入口：零界面跳到极暗设置页
   Core.java                  设置读写、时间窗口、反射工具、偏好项工厂
   SettingsHooks.java         极暗页面注入
   SystemHooks.java           system_server 侧触发源合成
